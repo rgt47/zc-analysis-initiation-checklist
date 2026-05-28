@@ -27,6 +27,8 @@ format:
     geometry: margin=1in
     fontsize: 11pt
     toc: false
+cluster: zzcollab-compendia
+cluster-order: 5
 ---
 
 <!-- ============================================================================
@@ -1976,3 +1978,19 @@ PRE-PUBLISH QA CHECKLIST: verify each item BEFORE setting draft: false
     [ ] Internal links resolve
 
 ============================================================================ -->
+
+## Related posts in this cluster
+
+This post is part of the *ZZCOLLAB Reproducible Compendia* series.
+Recommended reading order:
+
+1. Post 01: [Reproducible Blog Posts with ZZCOLLAB](../01-zc-quarto-compendium-intro/)
+2. Post 02: [Constructing a reproducible blog post using zzcollab tools](../02-zc-blog-post-template/)
+3. Post 03: [From Markdown to Blog Post: A ZZCOLLAB workflow](../03-zc-markdown-to-blog-workflow/)
+4. Post 04: [Sharing R Code via Docker: R Markdown Reports](../04-zc-share-rmd-via-docker/)
+5. **Post 05: A 55-Item Initiation Checklist for zzcollab Data Analyses** (this post)
+6. Post 06: [Seven Required Elements for a zzc Manuscript report.Rmd](../06-zc-manuscript-report-elements/)
+7. Post 07: [A tiered CI strategy for zzcollab research compendia](../07-zc-tiered-ci-strategy/)
+8. Post 08: [GitHub Actions workflows for zzcollab research compendia](../08-zc-github-actions-workflows/)
+9. Post 09: [Setting up rrtools (predecessor to zzcollab, archived)](../09-zc-rrtools-predecessor-archived/)
+

@@ -10,7 +10,7 @@ description: >
   We walk through the fifty-five items that move that
   attachment from the inbox to a reproducible zzcollab
   compendium ready for archival.
-image: 'media/images/hero.jpg'
+image: 'media/images/hero.png'
 document-type: 'blog'
 draft: false
 execute:
@@ -88,7 +88,7 @@ HERO IMAGE
 ![A clean workspace with a printed checklist, an open
 notebook, and a single CSV file open on screen, signalling
 deliberate setup before the first line of analysis code is
-written.](media/images/hero.jpg){.img-fluid width=80% fig-align="center"}
+written.](media/images/hero.png){.img-fluid width=80% fig-align="center"}
 
 *A documented, numbered checklist turns the first week of
 a data analysis project from improvisation into routine. The

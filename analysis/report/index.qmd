@@ -12,7 +12,7 @@ description: >
   compendium ready for archival.
 image: 'media/images/hero.png'
 document-type: 'blog'
-draft: false
+draft: true
 execute:
   echo: true
   warning: false
@@ -40,7 +40,7 @@ and lists all fifty-five preparation items inline.
 
 YAML FRONT MATTER
   [x] title, subtitle, date, categories, description, image
-  [x] draft: false (still true pending hero / ambiance imagery)
+  [x] draft: true (still true pending hero / ambiance imagery)
 
 NARRATIVE INPUTS
   [x] Hypothetical dataset description (file name, columns, ambiguities)
@@ -1535,7 +1535,7 @@ reduces the update to a build-and-render cycle.
 
 ![A finished compendium archived alongside the rendered
 report, with the standalone checklist filed in
-docs/.](media/images/ambiance3.jpg){.img-fluid}
+docs/.](media/images/ambiance3.png){.img-fluid}
 
 # What Did We Learn?
 
@@ -1935,12 +1935,12 @@ I would enjoy hearing from you if:
 *Source: ~/Dropbox/prj/qblog/posts/61-zzcollab-analysis-checklist/zzcollab-analysis-checklist/analysis/report/index.qmd*
 
 <!-- ============================================================================
-PRE-PUBLISH QA CHECKLIST: verify each item BEFORE setting draft: false
+PRE-PUBLISH QA CHECKLIST: verify each item BEFORE setting draft: true
 
 [ ] YAML
     [x] title, subtitle, date, categories, description, image filled in
     [x] document-type: 'blog'
-    [x] draft: false (still true pending hero / ambiance imagery)
+    [x] draft: true (still true pending hero / ambiance imagery)
 
 [x] Narrative complete (no remaining `[bracketed]` placeholders)
 

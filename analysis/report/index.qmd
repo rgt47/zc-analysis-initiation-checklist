@@ -2,7 +2,7 @@
 title: 'A 55-Item Initiation Checklist for zzcollab Data Analyses'
 author: "Ronald 'Ryy' G. Thomas"
 date: '2026-04-29'
-categories: [r, zzcollab, reproducibility, workflow, checklist, quarto]
+categories: [r, zzcollab-compendia, reproducibility, workflow, checklist, quarto]
 description: >
   A clinical research collaborator emails a single CSV file
   with twelve columns, two hundred and eighty-seven rows, no
@@ -12,7 +12,7 @@ description: >
   compendium ready for archival.
 image: 'media/images/hero.png'
 document-type: 'blog'
-draft: true
+draft: false
 execute:
   echo: true
   warning: false
@@ -40,7 +40,7 @@ and lists all fifty-five preparation items inline.
 
 YAML FRONT MATTER
   [x] title, subtitle, date, categories, description, image
-  [x] draft: true (still true pending hero / ambiance imagery)
+  [x] draft: false (still true pending hero / ambiance imagery)
 
 NARRATIVE INPUTS
   [x] Hypothetical dataset description (file name, columns, ambiguities)
@@ -1935,12 +1935,12 @@ I would enjoy hearing from you if:
 *Source: ~/Dropbox/prj/qblog/posts/61-zzcollab-analysis-checklist/zzcollab-analysis-checklist/analysis/report/index.qmd*
 
 <!-- ============================================================================
-PRE-PUBLISH QA CHECKLIST: verify each item BEFORE setting draft: true
+PRE-PUBLISH QA CHECKLIST: verify each item BEFORE setting draft: false
 
 [ ] YAML
     [x] title, subtitle, date, categories, description, image filled in
     [x] document-type: 'blog'
-    [x] draft: true (still true pending hero / ambiance imagery)
+    [x] draft: false (still true pending hero / ambiance imagery)
 
 [x] Narrative complete (no remaining `[bracketed]` placeholders)
 

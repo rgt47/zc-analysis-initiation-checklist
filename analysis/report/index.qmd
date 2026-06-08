@@ -1,6 +1,6 @@
 ---
 title: 'A 55-Item Initiation Checklist for zzcollab Data Analyses'
-author: "Ronald 'Ryy' G. Thomas"
+author: "Ronald G. Thomas"
 date: '2026-04-29'
 categories: [r, zzcollab-compendia, reproducibility, workflow, checklist, quarto]
 description: >

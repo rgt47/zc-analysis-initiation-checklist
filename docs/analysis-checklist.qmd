@@ -24,7 +24,7 @@ format:
     number-sections: false
 ---
 
-*2026-04-29 07:24 PDT*
+*2026-06-10 17:45 PDT*
 
 ## Instructions
 
@@ -51,37 +51,52 @@ two analysts can compare their progress unambiguously.
 
 # Phase 1: Project Setup
 
+**Prerequisite: verify project configuration.**
+Before Item 1, confirm that `zzcollab.yaml` in the project
+root (or `~/.zzcollab/config.yaml`) records the correct
+author name, license type, and profile. Run
+`zzc config set` to update any field. These settings
+populate `DESCRIPTION`, the Dockerfile base image, and
+generated templates; correcting them after Phase 1 requires
+manual clean-up.
+
 1. **Verify `Dockerfile` exists and builds successfully.**
 
    Run `zzc docker --build` from the project root. Confirm
    the build completes without error and that
    `docker images <project>` shows a recent image. The
-   Dockerfile defines the computational environment that
-   every subsequent step will run inside; an unbuildable
-   Dockerfile blocks every phase that follows.
+   Dockerfile is generated from the project profile
+   (`minimal`, `analysis`, `modeling`, or `publishing`);
+   confirm the correct profile was selected when the
+   project was initialised with `zzc <profile>`. An
+   unbuildable Dockerfile blocks every phase that follows.
 
 2. **Verify `renv.lock` contains required packages.**
 
-   Run `list-renv-packages.sh` or inspect `renv.lock` with
-   `jq`. The lockfile should list only direct dependencies
-   at this stage; transitive dependencies are resolved by
-   `renv::restore()` inside the container. The lockfile is
-   the second of the Five Pillars and pins the package
-   versions that make the analysis reproducible.
+   Inspect `renv.lock` directly or run
+   `jq '.Packages | keys[]' renv.lock` to list recorded
+   packages. The lockfile should list only direct
+   dependencies at this stage; transitive dependencies are
+   resolved by `renv::restore()` inside the container. The
+   lockfile is the second of the Five Pillars and pins the
+   package versions that make the analysis reproducible.
 
-3. **Verify `.Rprofile` has appropriate R options.**
+3. **Verify `.Rprofile` activates renv.**
 
    Open `.Rprofile` and confirm it calls
-   `source('renv/activate.R')` and sets
-   `options(renv.config.auto.snapshot = TRUE)`. The
-   zzcollab template also configures auto-restore on
-   session start so that a fresh container picks up the
-   lockfile automatically.
+   `source('renv/activate.R')`. The zzcollab template
+   activates renv so package paths resolve correctly
+   inside the container. Auto-restore is intentionally
+   disabled in Docker (`ZZCOLLAB_AUTO_RESTORE=false`):
+   the lockfile was baked into the image at build time
+   and does not need to be restored at session start.
+   Auto-restore remains active in interactive sessions
+   outside the container.
 
 4. **Verify source code directories exist.**
 
    Run `ls -d R/ analysis/scripts/ analysis/data/ tests/`
-   to confirm the rrtools directory skeleton is in place.
+   to confirm the zzcollab directory skeleton is in place.
    Create any missing directories with `mkdir -p`. The
    layout is the contract the rest of the checklist relies
    on; if `R/` does not exist, Phase 4 has nowhere to put
@@ -122,11 +137,15 @@ two analysts can compare their progress unambiguously.
    `janitor`, `skimr`.**
 
    Enter the container with `make r`, then run
-   `install.packages(c('tidyverse','here','janitor',
-   'skimr'))`. After installation, run `renv::snapshot()`
-   to record the exact versions in `renv.lock`. Add each
-   package to the DESCRIPTION Imports field so the
-   declared dependency set matches the installed
+   `install.packages(c('tidyverse', 'here', 'janitor',
+   'skimr'))`. After installation, run
+   `renv::record(c('tidyverse', 'here', 'janitor',
+   'skimr'))` to pin the exact versions in `renv.lock`.
+   The framework uses implicit snapshot mode;
+   `renv::record()` registers packages without risking
+   removal of others not yet captured by a full snapshot.
+   Add each package to the DESCRIPTION Imports field so
+   the declared dependency set matches the installed
    environment.
 
 # Phase 2: Data Ingestion and Validation
@@ -570,22 +589,22 @@ two analysts can compare their progress unambiguously.
 
     Provide a copy-pasteable sequence of shell commands
     that reproduces the analysis from a clean checkout.
-    Typically: `git clone`, `make docker-build`, `make r`,
-    source the scripts in order, render the reports. Test
-    these instructions on a machine that does not already
-    have the project set up; instructions that work only
-    on the author's laptop are not reproduction
-    instructions.
+    Typically: `git clone`, `zzc docker --build`
+    (or `make docker-build`), `make r`, source the
+    scripts in order, render the reports. Test these
+    instructions on a machine that does not already have
+    the project set up; instructions that work only on
+    the author's laptop are not reproduction instructions.
 
-51. **Rebuild Docker image: `make docker-build`.**
+51. **Rebuild Docker image: `zzc docker --build`.**
 
     After all DESCRIPTION and renv changes, run
-    `make docker-build` to produce a fresh image. Tag it
-    with the current git SHA so future readers can
-    identify the exact build that produced the published
-    results. The build should complete with no warnings
-    about missing packages; treat warnings as errors at
-    this stage.
+    `zzc docker --build` (or `make docker-build`) to
+    produce a fresh image. Tag it with the current git
+    SHA so future readers can identify the exact build
+    that produced the published results. The build should
+    complete with no warnings about missing packages;
+    treat warnings as errors at this stage.
 
 52. **Verify reproducibility: run all scripts in a fresh
     container.**
@@ -618,20 +637,23 @@ two analysts can compare their progress unambiguously.
     entire reproducibility check. Do not skip or
     deactivate a failing test to clear the gate.
 
-55. **Final review: all Five Pillars complete and
+55. **Final review: all Six Pillars complete and
     consistent.**
 
-    The zzcollab Five Pillars (Dockerfile, renv.lock,
-    .Rprofile, source code, data) must be coherent: the
-    Dockerfile references the same R version that
-    `renv.lock` was created against; `.Rprofile` activates
-    renv so the lockfile loads automatically; source code
-    in `R/` and `analysis/` runs in that environment; data
-    is read-only and documented. Walk through each pillar
-    one last time and confirm that the artefacts on disk
-    tell a single, consistent story about how to reproduce
-    the analysis.
+    The zzcollab Six Pillars (Dockerfile, `renv.lock`,
+    `.Rprofile`, source code, data, `tooling.lock`) must
+    be coherent: the Dockerfile references the same R
+    version that `renv.lock` was created against;
+    `.Rprofile` activates renv so the lockfile resolves
+    correctly; source code in `R/` and `analysis/` runs
+    in that environment; data is read-only and documented;
+    `tooling.lock` records the content-addressed versions
+    of zzcollab and zzrenvcheck so the tooling layer is
+    reproducible alongside the package layer. Walk through
+    each pillar one last time and confirm that the
+    artefacts on disk tell a single, consistent story
+    about how to reproduce the analysis.
 
 ---
 
-*Total items: 55. Last updated 2026-04-29.*
+*Total items: 55. Last updated 2026-06-10.*

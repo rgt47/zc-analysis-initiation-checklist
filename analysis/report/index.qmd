@@ -1,29 +1,16 @@
 ---
-title: 'A 55-Item Initiation Checklist for zzcollab Data Analyses'
+title: "A 55-Item Initiation Checklist for zzcollab Data Analyses"
 author: "Ronald G. Thomas"
-date: '2026-04-29'
+date: "2026-04-29"
 categories: [r, zzcollab-compendia, reproducibility, workflow, checklist, quarto]
-description: >
-  A clinical research collaborator emails a single CSV file
-  with twelve columns, two hundred and eighty-seven rows, no
-  codebook, and a promise of an updated extract 'next week'.
-  We walk through the fifty-five items that move that
-  attachment from the inbox to a reproducible zzcollab
-  compendium ready for archival.
-image: 'media/images/hero.png'
-document-type: 'blog'
+description: "A clinical research collaborator emails a single CSV file with twelve columns, two hundred and eighty-seven rows, no codebook, and a promise of an updated extract 'next week'. We walk through the fifty-five items that move that attachment from the inbox to a reproducible zzcollab compendium ready for archival."
+image: "media/images/hero.png"
+document-type: "blog"
 draft: true
 execute:
   echo: true
   warning: false
   message: false
-format:
-  pdf:
-    pdf-engine: xelatex
-    monofont: 'DejaVu Sans Mono'
-    geometry: margin=1in
-    fontsize: 11pt
-    toc: false
 cluster: zzcollab-compendia
 cluster-order: 5
 ---
@@ -656,7 +643,7 @@ dictionary. The deliverables are `R/load_data.R`,
 
 ![Workspace ambiance: an analyst at the second day of a
 project, with the printed checklist on the desk and the
-loaded data frame on screen.](media/images/ambiance1.png){.img-fluid}
+loaded data frame on screen.](media/images/ambiance1.png){.img-fluid height=3.5in}
 
 ## Phase 3: Exploratory Analysis (Items 23-31)
 
@@ -1211,7 +1198,7 @@ saved fitted-model objects in
 ![Editor view of the checklist artefact open alongside the
 working zzcollab project, showing how items are referenced
 by number from commit messages and TODO
-notes.](media/images/ambiance2.png){.img-fluid}
+notes.](media/images/ambiance2.png){.img-fluid height=3.5in}
 
 ## Phase 6: Documentation and Reproducibility (Items 46-55)
 
@@ -1532,7 +1519,7 @@ reduces the update to a build-and-render cycle.
 
 ![A finished compendium archived alongside the rendered
 report, with the standalone checklist filed in
-docs/.](media/images/ambiance3.png){.img-fluid}
+docs/.](media/images/ambiance3.png){.img-fluid height=3.5in}
 
 # What Did We Learn?
 

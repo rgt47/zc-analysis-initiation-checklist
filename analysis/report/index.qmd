@@ -1655,14 +1655,6 @@ first-time users.
 
 # See Also
 
-**Related posts:**
-
-- [Setup Post Template (worked example: AWS CLI provisioning)](https://focusonr.org/posts/templatesetup/):
-  the post-47 template that this workflow post adapts.
-- [Palmer Penguins, Part 1: EDA and Simple Regression](https://focusonr.org/posts/penguins1zzcollab/):
-  a worked zzcollab analysis that exercises Phases 1
-  through 5 on a small public dataset.
-
 **Key resources:**
 
 - [zzcollab framework](https://github.com/rgt47/zzcollab):

@@ -1908,7 +1908,7 @@ I would enjoy hearing from you if:
 ---
 
 *Rendered on 2026-04-30 at 08:06 PDT.*<br>
-*Source: ~/Dropbox/prj/qblog/posts/61-zzcollab-analysis-checklist/zzcollab-analysis-checklist/analysis/report/index.qmd*
+*Source: ~/prj/rgtlab/posts/zc-analysis-initiation-checklist/index.qmd*
 
 <!-- ============================================================================
 PRE-PUBLISH QA CHECKLIST: verify each item BEFORE setting draft: false

@@ -38,9 +38,11 @@ NARRATIVE INPUTS
 
 IMAGES (4 total: hero + 3 ambiance, all in media/images/)
   [ ] Hero image            — desk with printed checklist, fresh notebook
-  [ ] Ambiance image 1      — workspace shot, post-Objectives
-  [ ] Ambiance image 2      — editor view of the checklist mid-walkthrough
-  [ ] Ambiance image 3      — finished compendium on a shelf
+  [x] Ambiance image 1      — done (Gemini, 2026-08-25): numbered
+      index cards, checked off
+  [x] Ambiance image 2      — done: desk organizer with labeled
+      compartments
+  [x] Ambiance image 3      — done: completed paper checklist
   [ ] media/images/README.md — sources + attribution
 
 VERSION MATRIX (Reproducibility section)
@@ -641,9 +643,9 @@ dictionary. The deliverables are `R/load_data.R`,
     )
     ```
 
-![Workspace ambiance: an analyst at the second day of a
-project, with the printed checklist on the desk and the
-loaded data frame on screen.](media/images/ambiance1.png){.img-fluid height=3.5in}
+![A stack of blank index cards fanned across a wooden desk, each
+card numbered in the top corner, with several checked
+off.](media/images/ambiance1.jpg){.img-fluid height=3.5in}
 
 ## Phase 3: Exploratory Analysis (Items 23-31)
 
@@ -1195,10 +1197,8 @@ saved fitted-model objects in
       dplyr::filter(term == 'groupActive')
     ```
 
-![Editor view of the checklist artefact open alongside the
-working zzcollab project, showing how items are referenced
-by number from commit messages and TODO
-notes.](media/images/ambiance2.png){.img-fluid height=3.5in}
+![A wooden desk organizer with labeled compartments, each holding
+one small object.](media/images/ambiance2.jpg){.img-fluid height=3.5in}
 
 ## Phase 6: Documentation and Reproducibility (Items 46-55)
 
@@ -1517,9 +1517,8 @@ the analyst to re-derive every assumption about the new
 file by hand; a pipeline with the Phase 2 tests in place
 reduces the update to a build-and-render cycle.
 
-![A finished compendium archived alongside the rendered
-report, with the standalone checklist filed in
-docs/.](media/images/ambiance3.png){.img-fluid height=3.5in}
+![A single completed paper checklist, every box ticked, resting
+under a closed pen.](media/images/ambiance3.jpg){.img-fluid height=3.5in}
 
 # What Did We Learn?
 
@@ -1929,10 +1928,10 @@ PRE-PUBLISH QA CHECKLIST: verify each item BEFORE setting draft: false
     [x] At least 5 gotchas listed
     [x] Each gotcha has a symptom AND a recommended response
 
-[ ] Visual design
-    [ ] Hero image (width=80%) replaced from post-47 boilerplate
-    [ ] Three ambiance images replaced from post-47 boilerplate
-    [ ] Hero and ambiance captions describe the actual image
+[x] Visual design
+    [x] Hero image (width=80%) — genuine, pre-existing
+    [x] Three ambiance images — all genuine as of 2026-08-25
+    [x] Hero and ambiance captions describe the actual image
     [x] No hand-coded 'Download PDF' link in body
     [ ] media/images/README.md attributes every image
 

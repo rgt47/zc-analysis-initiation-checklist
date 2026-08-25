@@ -6,6 +6,13 @@ Attribution log for every image referenced from this post.
 Update each entry when an image is added, replaced, or
 removed.
 
+## Status (2026-08-25)
+
+Hero is genuine (pre-existing). All three ambiance slots are
+genuine Gemini generations as of 2026-08-25 (generated via the
+`gemini-image-generator` tool), replacing the post-47 placeholder
+inheritance noted below.
+
 ## hero.jpg
 
 - **Source:** Generated 2026-04-29 via Gemini (Imagen 3) at
@@ -26,15 +33,23 @@ removed.
   blog post YAML.
 - **License:** Generated content; no third-party rights.
 
-## ambiance1.png, ambiance2.png, ambiance3.jpg
+## Image slots in use
 
-- **Status:** Placeholder. Inherited from the post-47
-  template. Replace before flipping `draft: false`.
-- **Replacement prompts:** see Post 61 entry in
-  `~/Dropbox/prj/qblog/HERO_IMAGE_PROMPTS.md` (three
-  prompts: ambiance image 1 after Objectives, ambiance
-  image 2 mid-body, ambiance image 3 before Lessons
-  Learnt).
+| Slot | File | Status |
+|---|---|---|
+| Ambiance 1 | `ambiance1.jpg` | DONE. Numbered index cards laid out in a row, each with a checkmark. Metaphor: working through a checklist item by item. |
+| Ambiance 2 | `ambiance2.jpg` | DONE. A wooden desk organizer with labeled compartments holding small tools and supplies. Metaphor: organizing analysis inputs before starting. |
+| Ambiance 3 | `ambiance3.jpg` | DONE. A completed paper checklist resting under a pen. Metaphor: a finished initiation checklist. |
+
+All three processed via:
+
+```sh
+magick ~/gen_image/<file>.png \
+  -resize 1600x -strip -quality 85 \
+  <target-filename>.jpg
+```
+
+Final dimensions: 1600x873 for all three.
 
 ## Template for Additional Images
 
@@ -53,8 +68,7 @@ When adding images to this post, use this format:
 unused in this post)
 
 Carried over from the post-47 template. Not referenced
-from this post's body. Safe to delete once the three
-ambiance images for Post 61 are generated and installed.
+from this post's body. Safe to delete.
 
 - placeholder-coffee-01.jpg through -05.jpg: assorted
   Unsplash photos. See post-47's media README for

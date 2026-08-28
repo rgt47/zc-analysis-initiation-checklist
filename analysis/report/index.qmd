@@ -72,7 +72,7 @@ HERO IMAGE
 ============================================================================ -->
 
 ![A clean workspace with a printed checklist, an open
-notebook, and a single CSV file open on screen, signalling
+notebook, and a single CSV file open on screen, signaling
 deliberate setup before the first line of analysis code is
 written.](media/images/hero.png){.img-fluid width=80% fig-align="center"}
 
@@ -118,7 +118,7 @@ checklist that moves this attachment from inbox to
 publishable compendium. The structure is the same whether
 the dataset is a clinical trial, an observational cohort,
 a simulation output, or any other tabular extract that
-will be analysed in a zzcollab research compendium.
+will be analyzed in a zzcollab research compendium.
 
 # The Hypothetical Client Dataset
 
@@ -135,9 +135,9 @@ rows. One observation per participant per study visit.
 | Column            | Apparent type | Notes from the email |
 |-------------------|---------------|----------------------|
 | `ParticipantID`   | integer       | participant identifier |
-| `Status`          | categorical   | enrolment status     |
+| `Status`          | categorical   | enrollment status     |
 | `Sex`             | categorical   | M or F               |
-| `Group`           | categorical   | randomised arm       |
+| `Group`           | categorical   | randomized arm       |
 | `VisitAge`        | numeric       | age (years)          |
 | `VisitType`       | categorical   | baseline + follow-up |
 | `Outcome_A_Imp`   | numeric       | primary outcome A    |
@@ -215,7 +215,7 @@ how the work product accumulates.
 
 # The 55-Item Preparation Checklist
 
-The items are organised into six phases. Each phase
+The items are organized into six phases. Each phase
 corresponds to a deliverable that lives at a documented
 location.
 
@@ -224,7 +224,7 @@ location.
 |     1 |  1-8  | A buildable workspace with documented raw data      |
 |     2 | 9-22  | A cleaned, validated derived dataset                |
 |     3 | 23-31 | An EDA report with Table 1 and trajectory plots     |
-|     4 | 32-38 | Tested R functions for summary, modelling, plotting |
+|     4 | 32-38 | Tested R functions for summary, modeling, plotting |
 |     5 | 39-45 | A primary-analysis report with sensitivity analyses |
 |     6 | 46-55 | A reproducible compendium ready for archival        |
 
@@ -555,7 +555,7 @@ dictionary. The deliverables are `R/load_data.R`,
 
 19. [ ] **Clean column names using `janitor::clean_names()`.**
     `clean_names()` converts headers to snake_case and
-    normalises the BOM on the first column. Update the
+    normalizes the BOM on the first column. Update the
     data dictionary to record both raw and cleaned names.
 
     ```r
@@ -698,9 +698,9 @@ deliverables are `analysis/scripts/02-eda.R` and
     ```
 
 25. [ ] **Check baseline balance.**
-    For randomised trials, imbalance at baseline is
+    For randomized trials, imbalance at baseline is
     informative for downstream covariate adjustment, not
-    a basis for re-randomisation.
+    a basis for re-randomization.
 
     ```r
     baseline <- dat |> filter(visit_type == 'P1')
@@ -717,7 +717,7 @@ deliverables are `analysis/scripts/02-eda.R` and
       )
     ```
 
-26. [ ] **Visualise outcome distributions.**
+26. [ ] **Visualize outcome distributions.**
     Inspect for floor and ceiling effects, bimodality,
     heavy tails, and outliers.
 
@@ -775,7 +775,7 @@ deliverables are `analysis/scripts/02-eda.R` and
 
 29. [ ] **Document sample size and missingness patterns.**
     Report the number of participants enrolled,
-    randomised, and analysed at each visit. Tabulate
+    randomized, and analyzed at each visit. Tabulate
     missingness by variable and by visit so the reader
     can judge the analytic implications.
 
@@ -797,9 +797,9 @@ deliverables are `analysis/scripts/02-eda.R` and
 
 30. [ ] **Include baseline characteristics table (Table 1).**
     Use `gtsummary::tbl_summary()` stratified by `group`.
-    For randomised trials, avoid statistical tests of
+    For randomized trials, avoid statistical tests of
     baseline balance; they are uninformative when
-    randomisation succeeded.
+    randomization succeeded.
 
     ```r
     library(gtsummary)
@@ -853,7 +853,7 @@ deliverables are `analysis/scripts/02-eda.R` and
 ## Phase 4: Analysis Functions (Items 32-38)
 
 Phase 4 produces tested R functions for summary,
-modelling, and plotting. The deliverables are
+modeling, and plotting. The deliverables are
 `R/summarize_outcomes.R`, `R/model_outcomes.R`,
 `R/plot_outcomes.R`, and corresponding test files under
 `inst/tinytest/`.
@@ -888,7 +888,7 @@ modelling, and plotting. The deliverables are
     ```
 
 33. [ ] **Create `R/model_outcomes.R` with statistical
-    modelling functions.**
+    modeling functions.**
     Wrap each call to `lm()`, `lmer()`, or `glm()` in a
     function so the model specification is captured in
     code rather than reproduced inline.
@@ -919,7 +919,7 @@ modelling, and plotting. The deliverables are
     }
     ```
 
-34. [ ] **Create `R/plot_outcomes.R` with visualisation
+34. [ ] **Create `R/plot_outcomes.R` with visualization
     functions.**
     Plotting functions return a ggplot; they do not call
     `ggsave()`. Returning the object lets reports compose
@@ -977,7 +977,7 @@ modelling, and plotting. The deliverables are
     ```
 
 36. [ ] **Create `inst/tinytest/test_model.R`.**
-    Test modelling functions against simulated data with
+    Test modeling functions against simulated data with
     known parameters. Use `set.seed()` for
     reproducibility.
 
@@ -1010,7 +1010,7 @@ modelling, and plotting. The deliverables are
 37. [ ] **Test edge cases: missing data handling.**
     The `_Imp` columns should not have NAs, but their
     unimputed counterparts might. Lock down the
-    documented behaviour with a test.
+    documented behavior with a test.
 
     ```r
     tiny_with_na <- tiny
@@ -1170,7 +1170,7 @@ saved fitted-model objects in
     ```
 
 45. [ ] **Document sensitivity analyses in the report.**
-    For each modelling assumption that could plausibly
+    For each modeling assumption that could plausibly
     affect the conclusion, run a sensitivity analysis
     and document its result alongside the primary.
 
@@ -1362,7 +1362,7 @@ end-to-end reproducibility run.
 55. [ ] **Final review: all Five Pillars complete and
     consistent.**
     Walk through each pillar one last time and confirm
-    that the artefacts on disk tell a single, consistent
+    that the artifacts on disk tell a single, consistent
     story.
 
     ```sh
@@ -1444,7 +1444,7 @@ fitted models as RDS').
 
 3. **The integrity tests are not unit tests.** Items
    11-17 assert contracts about the raw data, not
-   behaviours of functions. They live in `inst/tinytest/`,
+   behaviors of functions. They live in `inst/tinytest/`,
    not `tests/testthat/`, by convention. Mixing the two
    leads to tests that pass against frozen fixtures but
    fail against live data.
@@ -1522,14 +1522,14 @@ under a closed pen.](media/images/ambiance3.jpg){.img-fluid height=3.5in}
 
 # What Did We Learn?
 
-## Lessons Learnt
+## Lessons Learned
 
 **Conceptual Understanding:**
 
 - A checklist is a tool for surfacing the steps that are
   easy to skip, not for enforcing a particular workflow.
   The same checklist will produce slightly different
-  artefacts in two projects; that is the intended
+  artifacts in two projects; that is the intended
   outcome.
 - The phase boundaries are useful precisely because they
   are arbitrary. Anything that lets a project pause and
@@ -1539,7 +1539,7 @@ under a closed pen.](media/images/ambiance3.jpg){.img-fluid height=3.5in}
   first-time use; experienced users only consult the
   numbers.
 - Reproducibility is a property of the workspace as a
-  whole, not of any single artefact. The Five Pillars
+  whole, not of any single artifact. The Five Pillars
   review at Item 55 is the only point that audits the
   workspace rather than its parts.
 
@@ -1595,7 +1595,7 @@ under a closed pen.](media/images/ambiance3.jpg){.img-fluid height=3.5in}
 - **No statistical analysis plan template.** Item 40
   says 'follow the SAP'; it does not provide one.
   Drafting the SAP is the analyst's responsibility.
-- **No coverage of stakeholder-facing artefacts.** The
+- **No coverage of stakeholder-facing artifacts.** The
   checklist ends at Item 55 (reproducible compendium).
   It says nothing about manuscript drafting, conference
   posters, or oral presentations.
@@ -1608,7 +1608,7 @@ Several avenues would be worth exploring further:
    question, target population, success criteria) that
    precede the workspace creation in Item 1.
 2. Add a 'completion column' to the rendered checklist
-   with a date and analyst initials, so the artefact
+   with a date and analyst initials, so the artifact
    doubles as a sign-off log.
 3. Extend Phase 6 with archival items (DOI assignment,
    Zenodo deposit, OSF preregistration) for projects
@@ -1617,7 +1617,7 @@ Several avenues would be worth exploring further:
    as input and asserts each item's existence
    (`tests/integration/test-checklist-coverage.R`).
 5. Translate the checklist into a Quarto project
-   template that initialises an empty
+   template that initializes an empty
    `docs/analysis-checklist.qmd` alongside the
    boilerplate `Dockerfile`, `Makefile`, `DESCRIPTION`
    produced by `zzc analysis`.
@@ -1666,7 +1666,7 @@ first-time users.
   a broader treatment of reproducibility practice.
 - [Quarto documentation](https://quarto.org/docs/):
   authoring reference for the standalone checklist
-  artefact.
+  artifact.
 
 ---
 
@@ -1718,7 +1718,7 @@ quarto render index.qmd --to pdf
 
 The annotated walkthrough above is the durable teaching
 content. The compact table below is the operational
-artefact, intended to be printed as a single sheet and
+artifact, intended to be printed as a single sheet and
 ticked off in pen as a project progresses. The PDF render
 ships a fully-gridded version with cell borders; the HTML
 render uses the standard browser table.
@@ -1755,7 +1755,7 @@ render uses the standard browser table.
 |  23 | analysis/scripts/02-eda.R written                     |      |                |       |
 |  24 | Summary statistics by group computed                  |      |                |       |
 |  25 | Baseline balance checked                              |      |                |       |
-|  26 | Outcome distributions visualised                      |      |                |       |
+|  26 | Outcome distributions visualized                      |      |                |       |
 |  27 | Outliers and data-quality flags documented            |      |                |       |
 |  28 | analysis/report/01-eda.qmd written                    |      |                |       |
 |  29 | Sample size and missingness documented                |      |                |       |

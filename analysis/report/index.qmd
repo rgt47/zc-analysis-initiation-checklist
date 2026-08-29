@@ -6,7 +6,7 @@ categories: [r, zzcollab-compendia, reproducibility, workflow, checklist, quarto
 description: "A clinical research collaborator emails a single CSV file with twelve columns, two hundred and eighty-seven rows, no codebook, and a promise of an updated extract 'next week'. We walk through the fifty-five items that move that attachment from the inbox to a reproducible zzcollab compendium ready for archival."
 image: "media/images/hero.png"
 document-type: "blog"
-draft: true
+draft: false
 execute:
   echo: true
   warning: false

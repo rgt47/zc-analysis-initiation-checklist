@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/zenn/prj/tch/05-practicum ls-files --others --exclude-standard)",
+      "Bash(git *)",
+      "Bash(pip3 show *)"
+    ]
+  }
+}

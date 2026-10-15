@@ -70,3 +70,6 @@ npm-debug.log*
 *.aux
 tmp-pdfcrop*.tex
 /index_files/
+
+# Machine-local Claude Code settings
+**/.claude/settings.local.json
